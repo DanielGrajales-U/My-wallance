@@ -1,34 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter, Route } from 'react-router-dom'
+import { RoutesWithNotFound } from './Utils'
+import { PublicRoutes, PrivateRoutes } from './Models'
+import AuthGuard from './Guards/AuthGuard'
 import './App.css'
+import { Login, Signup } from './Page/PUBLIC/Sesion' 
+import { Private } from './Page/PRIVATE'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+    <RoutesWithNotFound>
+      <Route path={PublicRoutes.LOGIN} element={<Login />} />
+      <Route path={PublicRoutes.SIGNUP} element={<Signup />} />
+      <Route element={<AuthGuard />}>
+        <Route path={`${PrivateRoutes.PRIVATE}/*`} element={<Private />} />
+      </Route>
+    </RoutesWithNotFound>
+  </BrowserRouter>
   )
 }
 
