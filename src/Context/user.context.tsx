@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
-import { UserModel } from "../Models";
-import { ChildrenProps, UserContextType } from "./interface";
+import { UserModel } from "../Interfaces";
+import { ChildrenProps, UserContextType } from "../Interfaces";
 
 const UserContext = createContext<UserContextType | undefined >(undefined);
 

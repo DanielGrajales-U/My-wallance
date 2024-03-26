@@ -1,11 +1,13 @@
 
 import { Navigate, Outlet } from "react-router-dom";
-import { PublicRoutes } from "../Models";
+import { PublicRoutes, UserContextType } from "../Interfaces";
+import { useContext } from "react";
+import { UserContext } from "../Context";
 
 const outletValidation = <Outlet />
 const publicValidation = <Navigate replace to={PublicRoutes.LOGIN} />
 
 export default function AuthGuard() {
-    const userState = useSelector((store: AppStore) => store.user)
-    return userState.name ? outletValidation : publicValidation
+    const { user } = useContext(UserContext) as UserContextType
+    return user ? outletValidation : publicValidation
 }

@@ -1,5 +1,5 @@
 import { Navigate, Route } from 'react-router-dom';
-import { PrivateRoutes } from '../../Models';
+import { PrivateRoutes } from '../../Interfaces';
 import { Wallance, History } from './Loby';
 import { RoutesWithNotFound } from '../../Utils';
 

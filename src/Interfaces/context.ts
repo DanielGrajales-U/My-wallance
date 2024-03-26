@@ -1,4 +1,4 @@
-import { UserModel } from "../Models";
+import { UserModel } from "./user";
 
 export interface ChildrenProps {
     children: React.ReactNode
