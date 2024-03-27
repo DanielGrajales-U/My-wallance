@@ -2,10 +2,10 @@ import { useState } from 'react';
 import useUser from '../../../Hooks/useUser';
 
 export default function Login() {
-  const { showData } = useUser();
+  const { handleLogin } = useUser();
   const [formData, setFormData] = useState({
-    userName: '',
     email: '',
+    password: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,14 +17,15 @@ export default function Login() {
   };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    showData(formData);
+    console.log(formData)
+    handleLogin(formData);
   };
   return (
     <div>
       Login
       <form onSubmit={handleSubmit}>
-        <input name='userName' onChange={handleChange} type='text' placeholder='userName' />
-        <input name='email' onChange={handleChange} type='email' placeholder='email' />
+        <input name='email' onChange={handleChange} type='text' placeholder='Email' />
+        <input name='password' onChange={handleChange} type='password' placeholder='Password' />
         <button type='submit'>Send</button>
       </form>
     </div>

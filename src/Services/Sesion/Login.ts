@@ -13,6 +13,7 @@ const loginService = async ( body: loginProps) => {
           })
 
         const resJson = await response.json()
+        console.log(resJson)
         return resJson
     }   
     catch(error){
