@@ -1,7 +1,7 @@
 import { loginProps } from "../../Interfaces"
 
 const loginService = async ( body: loginProps) => {
-    console.log(import.meta.env.VITE_BACKEND_URL)
+
     try{
         const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, {
             method: 'POST',
@@ -13,7 +13,6 @@ const loginService = async ( body: loginProps) => {
           })
 
         const resJson = await response.json()
-        console.log(resJson)
         return resJson
     }   
     catch(error){

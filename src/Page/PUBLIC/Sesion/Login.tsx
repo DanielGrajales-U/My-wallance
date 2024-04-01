@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import useUser from '../../../Hooks/useUser';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
+  const navigate = useNavigate()
   const { handleLogin } = useUser();
   const [formData, setFormData] = useState({
     email: '',
@@ -17,9 +19,10 @@ export default function Login() {
   };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData)
     handleLogin(formData);
+    navigate('/private');
   };
+
   return (
     <div>
       Login

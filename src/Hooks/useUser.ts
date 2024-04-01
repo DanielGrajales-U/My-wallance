@@ -11,12 +11,11 @@ export default function useUser() {
     const handleLogin = async (body: loginProps) => {
         try{
             const response = await loginService(body)
-
             if(response.success){
                 const {token} = response
-                const {userName, email} = response.data
+                const {userName, email, amount} = response.data
                 
-                const userLoged = {userName, email, token}
+                const userLoged = {userName, email, token, amount}
                 
                 setUser(userLoged)
                 sessionStorage.setItem('user', JSON.stringify(userLoged))
