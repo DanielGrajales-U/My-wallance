@@ -3,6 +3,7 @@ import { UserContext } from "../../../Context"
 import { UserContextType } from "../../../Interfaces"
 import { useTransaction } from "../../../Hooks"
 import { convertAmountToNumber } from "../../../Utils"
+import { Link } from "react-router-dom"
 
 export default function Wallance() {
   const {user} = useContext(UserContext) as UserContextType
@@ -28,6 +29,8 @@ export default function Wallance() {
 
   return (
     <section>
+      <button>⬅</button>
+      <Link to={'/private/history'}>History</Link>
       <h3>{user?.userName}</h3>
       <p>{user?.amount},00</p>
       <form onSubmit={handleSubmit}>

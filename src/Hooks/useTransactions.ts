@@ -12,7 +12,6 @@ export default function useTransaction() {
         try {
             const response = await createTransaction(body, user?.token);
             console.log(response);
-            // Actualizar el estado del usuario después de la transacción
             if (response.success) {
                 setUser((prevUser) => ({
                     ...prevUser as UserModel,

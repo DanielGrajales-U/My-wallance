@@ -3,10 +3,12 @@ import { UserContext } from "../Context"
 import { UserContextType } from "../Interfaces"
 import { loginService, signupService } from "../Services"
 import { loginProps, signupProps } from "../Interfaces"
+import { useNavigate } from "react-router-dom"
 
 export default function useUser() {
 
     const {setUser} = useContext(UserContext) as UserContextType
+    const navigate = useNavigate()
 
     const handleLogin = async (body: loginProps) => {
         try{
@@ -19,6 +21,8 @@ export default function useUser() {
                 
                 setUser(userLoged)
                 sessionStorage.setItem('user', JSON.stringify(userLoged))
+
+                navigate('/private')
 
                 return response
             }else{

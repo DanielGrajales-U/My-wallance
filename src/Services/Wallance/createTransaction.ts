@@ -14,7 +14,6 @@ const amountService = async ( body: createTransactionProps, token: string | unde
           })
 
         const resJson = await response.json()
-        console.log(resJson)
         return resJson
     }   
     catch(error){
