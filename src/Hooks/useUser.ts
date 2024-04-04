@@ -43,9 +43,16 @@ export default function useUser() {
         }
     }
 
+    const handleLogout = () => {
+        sessionStorage.removeItem('user')
+        setUser(null)
+        navigate('/')
+    }
+
     return {
         handleSignup,
-        handleLogin
+        handleLogin,
+        handleLogout
     }
    
 }

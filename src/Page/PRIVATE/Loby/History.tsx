@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import historyService from "../../../Services/Wallance/history";
 import { UserContext } from "../../../Context";
-import { objectHistory, UserContextType } from "../../../Interfaces";
+import { objectHistory, PrivateRoutes, UserContextType } from "../../../Interfaces";
 import formatDate from "../../../Utils/formatDate";
 import { Link } from "react-router-dom";
 
@@ -18,7 +18,7 @@ export default function History() {
   },[user?.token])
   return (
     <div>
-      <Link to={'/private'}>⬅</Link>
+      <Link to={`/${PrivateRoutes.PRIVATE}`} replace>⬅</Link>
       {
         history.map(item => {
           const formatedDate = formatDate(item.date)

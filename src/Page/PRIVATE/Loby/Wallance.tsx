@@ -1,13 +1,14 @@
 import { useContext, useState } from "react"
 import { UserContext } from "../../../Context"
-import { UserContextType } from "../../../Interfaces"
-import { useTransaction } from "../../../Hooks"
+import { PrivateRoutes, UserContextType } from "../../../Interfaces"
+import { useTransaction, useUser } from "../../../Hooks"
 import { convertAmountToNumber } from "../../../Utils"
 import { Link } from "react-router-dom"
 
 export default function Wallance() {
   const {user} = useContext(UserContext) as UserContextType
-  const { createTrans } = useTransaction()
+  const {handleLogout} = useUser()
+   const { createTrans } = useTransaction()
   const [formData, setFormData] = useState({
     amount: '',
     description: ''
@@ -29,8 +30,8 @@ export default function Wallance() {
 
   return (
     <section>
-      <button>⬅</button>
-      <Link to={'/private/history'}>History</Link>
+      <button onClick={handleLogout}>⬅</button>
+      <Link to={`/${PrivateRoutes.PRIVATE}/${PrivateRoutes.HISTORY}`} replace>History</Link>
       <h3>{user?.userName}</h3>
       <p>{user?.amount},00</p>
       <form onSubmit={handleSubmit}>

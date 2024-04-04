@@ -1,5 +1,7 @@
 import { useState } from "react";
 import useUser from "../../../Hooks/useUser";
+import { PublicRoutes } from "../../../Interfaces";
+import { Link } from "react-router-dom";
 
 export default function Signup() {
   const { handleSignup } = useUser();
@@ -29,6 +31,7 @@ export default function Signup() {
         <input name='password' onChange={handleChange} type='password' placeholder='password' />
         <button type='submit'>Send</button>
       </form>
+      <p>¿Ya tienes una cuenta? <Link to={PublicRoutes.LOGIN}>Iniciar sesion</Link></p>
     </div>
   );
 }
