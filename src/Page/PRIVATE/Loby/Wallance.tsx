@@ -1,14 +1,24 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../../../Context"
 import { PrivateRoutes, UserContextType } from "../../../Interfaces"
 import { useTransaction, useUser } from "../../../Hooks"
 import { convertAmountToNumber } from "../../../Utils"
 import { Link } from "react-router-dom"
+import { validateTransaction } from "../../../Validators"
+import ErrorContext from "../../../Context/error.context"
+import { ErrorContextType } from "../../../Interfaces/error"
+import { ShowError } from "../../../Components"
 
 export default function Wallance() {
   const {user} = useContext(UserContext) as UserContextType
+  const { errors, setErrors } = useContext(ErrorContext) as ErrorContextType
   const {handleLogout} = useUser()
-   const { createTrans } = useTransaction()
+  const { createTrans } = useTransaction()
+  
+  useEffect(() => {
+    setErrors([])
+  }, [])
+
   const [formData, setFormData] = useState({
     amount: '',
     description: ''
@@ -21,10 +31,15 @@ export default function Wallance() {
       [name]: value,
     }));
   };
-
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const data = convertAmountToNumber(formData)
+    const valid = validateTransaction(data)
+    if(valid.length > 0) {
+      setErrors(valid)
+      return
+    }
     createTrans(data);
   };
 
@@ -37,6 +52,7 @@ export default function Wallance() {
       <form onSubmit={handleSubmit}>
         <input onChange={handleChange} name="amount" type="text" placeholder="0.00" />
         <input onChange={handleChange} name="description" type="text" placeholder="Description"/>
+        <ShowError errors={errors}/>
         <button type="submit">Submit</button>
       </form>
     </section>
