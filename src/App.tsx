@@ -2,12 +2,10 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import { RoutesWithNotFound } from './Utils'
 import { PublicRoutes, PrivateRoutes } from './Interfaces'
 import AuthGuard from './Guards/AuthGuard'
-import './App.css'
 import { Login, Signup } from './Page/PUBLIC/Sesion' 
 import { Private } from './Page/PRIVATE'
 
 function App() {
-
   return (
     <BrowserRouter>
     <RoutesWithNotFound>
