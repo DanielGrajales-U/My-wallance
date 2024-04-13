@@ -46,3 +46,31 @@ export const BackButton = styled.button`
         transform: scale(1.2);
     }
 `
+
+export const DateHistory = styled.span`
+    width: 100px;
+    color: aliceblue;
+    letter-spacing: 2px;
+    font-family: Mulish;
+    font-weight: bolder;
+`
+
+export const MoreDetails = styled.div`
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+`
+
+export const Description = styled.p`
+    width: 70%;
+    color: #FBC02D;
+    font-family: Montserrat;
+    font-weight: 600;
+`
+
+export const Ammount = styled.p`
+    width: 30%;
+    text-align: right;
+    font-family: Montserrat;
+    font-weight: 600;
+`

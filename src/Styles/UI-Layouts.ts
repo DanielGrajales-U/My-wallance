@@ -26,3 +26,12 @@ export const NavWallance = styled.nav`
     justify-content: space-between;
     align-items: center;
 `
+
+export const HistoryContent = styled.section`
+    width: 450px;
+    max-width: 450px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+`;

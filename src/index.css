@@ -12,3 +12,11 @@
   font-family: Mulish;
   src: url('../public/fonts/Mulish-VariableFont_wght.ttf');
 }
+
+.negative{
+  color: #F25757 
+}
+
+.positive{
+  color: #00C49A
+}
