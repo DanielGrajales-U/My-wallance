@@ -1,8 +1,8 @@
 
-const historyService = async ( token: string | undefined) => {
+const historyService = async ( token: string | undefined, page: number = 1) => {
     
     try{
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/transaction/history`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/transaction/history?page=${page}`, {
             method: 'GET',
             mode: 'cors',
             headers: {

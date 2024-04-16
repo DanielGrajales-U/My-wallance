@@ -138,3 +138,29 @@ export const AmountLabelForm = styled.label`
     margin: 0 10px 10px 0;
 
 `
+
+export const PaginationContent = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+export const PaginationButton = styled.button`
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  padding: 10px;
+  font-family: Montserrat;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  transition: all .2s ease-in-out;
+  &:hover {
+    background-color: #06296B;
+    color: #fff;
+    font-weight: bolder;
+    cursor: pointer;
+  }
+`;

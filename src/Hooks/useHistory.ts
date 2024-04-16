@@ -7,18 +7,24 @@ export default function useHistory() {
   const {user} = useContext(UserContext) as UserContextType
   const [history, setHistory] = useState<objectHistory[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [pageNumber, setPageNumber] = useState<number>(1);
 
   useEffect(() => {
     const getHistory = async () => {
-      const response = await historyService(user?.token);
+      const response = await historyService(user?.token, pageNumber);
       setHistory(response.data.docs);
+      const totalDocs = Math.ceil(response.data.totalDocs / 6)
+      setTotalPages(totalDocs);
       setIsLoading(false);
     };
     getHistory();
-  }, [user?.token]);
+  }, [user?.token, pageNumber]);
 
   return {
     history,
-    isLoading
+    isLoading,
+    totalPages,
+    setPageNumber
   }
 }

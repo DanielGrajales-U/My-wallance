@@ -1,6 +1,4 @@
-import { useContext } from 'react';
-import { UserContext } from '../../../Context';
-import { PrivateRoutes, UserContextType } from '../../../Interfaces';
+import { PrivateRoutes } from '../../../Interfaces';
 import formatDate from '../../../Utils/formatDate';
 import { Link } from 'react-router-dom';
 import {
@@ -18,14 +16,21 @@ import {
   MoreDetails,
 } from '../../../Styles/UI-Wallance';
 import { useHistory } from '../../../Hooks';
+import { Loader } from '../../../Components';
+import Pagination from '../../../Components/Pagination/Pagination';
 
 export default function History() {
-  const { history, isLoading } = useHistory();
+  const { history, isLoading, totalPages, setPageNumber } = useHistory();
+  const currentPage = 1
+
+  const handlePageChange = (page) => {
+    setPageNumber(page)
+  };
 
   return (
     <WallanceSection>
       {isLoading ? (
-        <div className='loader'></div>
+       <Loader />
       ) : (
         <CardContent>
           <NavWallance>
@@ -56,6 +61,7 @@ export default function History() {
               </HistoryContent>
             );
           })}
+          <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange}/>
         </CardContent>
       )}
     </WallanceSection>
