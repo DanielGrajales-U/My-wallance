@@ -5,19 +5,29 @@ import { validateLogin } from '../../../Validators';
 import ErrorContext from '../../../Context/error.context';
 import { ErrorContextType } from '../../../Interfaces/error';
 import { ShowError } from '../../../Components';
-import { CardForm, DontAccount, Input, InputGroup, LabelForm, Link, SesionDiv, SubmitButton, TitleSesion } from '../../../Styles/UI-Components';
+import {
+  CardForm,
+  DontAccount,
+  Input,
+  InputGroup,
+  LabelForm,
+  Link,
+  SesionDiv,
+  SubmitButton,
+  TitleSesion,
+} from '../../../Styles/UI-Components';
 
 export default function Login() {
   const { handleLogin } = useUser();
-  const {errors, setErrors} = useContext(ErrorContext) as ErrorContextType
+  const { errors, setErrors } = useContext(ErrorContext) as ErrorContextType;
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
 
   useEffect(() => {
-    setErrors([])
-  }, [])
+    setErrors([]);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -28,10 +38,10 @@ export default function Login() {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const valid = validateLogin(formData)
-    if (valid.length > 0){
-      setErrors(valid)
-      return
+    const valid = validateLogin(formData);
+    if (valid.length > 0) {
+      setErrors(valid);
+      return;
     }
     handleLogin(formData);
   };
@@ -39,16 +49,30 @@ export default function Login() {
   return (
     <SesionDiv>
       <CardForm onSubmit={handleSubmit}>
-      <TitleSesion>Bienvenido</TitleSesion>
+        <TitleSesion>Bienvenido</TitleSesion>
         <InputGroup>
-        <LabelForm htmlFor='email'>Email</LabelForm>
-        <Input name='email' onChange={handleChange} type='text' placeholder='Ingresa tu email' id='email'/>
-        <LabelForm htmlFor='password'>Password</LabelForm>
-        <Input name='password' onChange={handleChange} type='password' placeholder='Ingresa tu contraseña' id='password'/>
-        <SubmitButton type='submit'>Send</SubmitButton>
+          <LabelForm htmlFor='email'>Email</LabelForm>
+          <Input
+            name='email'
+            onChange={handleChange}
+            type='text'
+            placeholder='Ingresa tu email'
+            id='email'
+          />
+          <LabelForm htmlFor='password'>Password</LabelForm>
+          <Input
+            name='password'
+            onChange={handleChange}
+            type='password'
+            placeholder='Ingresa tu contraseña'
+            id='password'
+          />
+          <SubmitButton type='submit'>Send</SubmitButton>
         </InputGroup>
-      <ShowError errors={errors} />
-      <DontAccount>¿No tienes una cuenta? <Link to={PublicRoutes.SIGNUP}>Crear cuenta</Link></DontAccount>
+        {errors.length > 0 ? <ShowError error={errors[0]} /> : null}
+        <DontAccount>
+          ¿No tienes una cuenta? <Link to={PublicRoutes.SIGNUP}>Crear cuenta</Link>
+        </DontAccount>
       </CardForm>
     </SesionDiv>
   );

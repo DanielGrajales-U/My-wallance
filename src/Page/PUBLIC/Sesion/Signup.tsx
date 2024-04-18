@@ -77,10 +77,11 @@ export default function Signup() {
           />
           <SubmitButton type='submit'>Registrate</SubmitButton>
         </InputGroup>
-      <ShowError errors={errors} />
-      <DontAccount>
-        ¿Ya tienes una cuenta? <Link to={PublicRoutes.LOGIN}>Iniciar sesion</Link>
-      </DontAccount>
+        {errors.length > 0 ? <ShowError error={errors[0]} /> : null}
+
+        <DontAccount>
+          ¿Ya tienes una cuenta? <Link to={PublicRoutes.LOGIN}>Iniciar sesion</Link>
+        </DontAccount>
       </CardForm>
     </SesionDiv>
   );

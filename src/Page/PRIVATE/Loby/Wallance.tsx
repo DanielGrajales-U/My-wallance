@@ -97,7 +97,7 @@ export default function Wallance() {
               type='text'
               placeholder='Description'
             />
-            <ShowError errors={errors} />
+            {errors.length > 0 ? <ShowError error={errors[0]} /> : null}
             <SubmitButton type='submit'>Hacer transacción</SubmitButton>
           </InputGroup>
         </form>

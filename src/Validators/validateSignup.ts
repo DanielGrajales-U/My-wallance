@@ -5,7 +5,15 @@ import { userNameRegex, emailRegex  } from '../Regex';
 const validateSignup = (formData: signupProps) => {
     const { userName, email, password } = formData;
     const errors: string[] = [];
-
+    if(userName.length === 0){
+        errors.push('Por favor ingrese un nombre de usuario.');
+    }
+    if(email.length === 0){
+        errors.push('Por favor ingrese un email');
+    }
+    if(password.length === 0){
+        errors.push('Por favor ingrese una contraseña');
+    }
     if (!userNameRegex.test(userName)) {
         errors.push('El nombre de usuario no es válido.');
     }

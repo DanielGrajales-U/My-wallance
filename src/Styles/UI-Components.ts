@@ -164,3 +164,24 @@ export const PaginationButton = styled.button`
     cursor: pointer;
   }
 `;
+
+export const ErrorContent = styled.div`
+  width: 100%;
+  height: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Error = styled.p`
+  color: #F25757;
+  text-align: center;
+  font-family: Montserrat;
+  font-weight: 800;
+  letter-spacing: 1px;
+`;
+
+export const ErrorSvg = styled.svg`
+  color: #F25757;
+`
