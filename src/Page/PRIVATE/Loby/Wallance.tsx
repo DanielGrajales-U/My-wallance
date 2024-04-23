@@ -22,7 +22,7 @@ import useSEO from '../../../Hooks/useSeo';
 
 export default function Wallance() {
   useSEO({
-    title: 'Ballance',
+    title: 'Balance',
     description: 'Wallance',
   })
   const { user } = useContext(UserContext) as UserContextType;
