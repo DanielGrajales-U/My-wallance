@@ -1,6 +1,12 @@
 [build]
   command = "npm run build"
   publish = "public"
+  environment = { 
+    VITE_BACKEND_URL = "https://my-wallance-api-1.onrender.com/wallance/api/v1",
+    VITE_VALIDATION_ERROR = "VALIDATION_ERROR",
+    VITE_INVALID_DATA = "INVALID_DATA",
+    VITE_DATA_ALREADY_EXISTS = "DATA_ALREADY_EXISTS"
+  }
 
 [[redirects]]
   from = "/*"
