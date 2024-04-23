@@ -1,7 +1,7 @@
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 const deleteTransactionService = async ( id: string, token: string | undefined ) => {
-    
     try{
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/transaction/delete/${id}`, {
+        const response = await fetch(`${baseUrl}/transaction/delete/${id}`, {
             method: 'DELETE',
             mode: 'cors',
             headers: {
