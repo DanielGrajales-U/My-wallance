@@ -40,6 +40,7 @@ export default function useUser() {
         try{
             const response = await signupService({userName, email, password})
             if(response.success){
+                alert('Registrado con exito')
                 return response
             }else{
                 throw new Error(response.error_code)

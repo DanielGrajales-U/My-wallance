@@ -16,8 +16,13 @@ import {
   SubmitButton,
   TitleSesion,
 } from '../../../Styles/UI-Components';
+import useSEO from '../../../Hooks/useSeo';
 
 export default function Login() {
+  useSEO({
+    title: 'Inicio de sesion',
+    description: 'Login',
+  })
   const { handleLogin } = useUser();
   const { errors, setErrors } = useContext(ErrorContext) as ErrorContextType;
   const [formData, setFormData] = useState({

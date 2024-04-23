@@ -18,8 +18,13 @@ import { useHistory, useTransaction } from '../../../Hooks';
 import { Loader, TrashSvgComponent } from '../../../Components';
 import Pagination from '../../../Components/Pagination/Pagination';
 import {BackSvgComponent} from '../../../Components';
+import useSEO from '../../../Hooks/useSeo';
 
 export default function History() {
+  useSEO({
+    title: 'Historial',
+    description: 'History',
+  })
   const { history, isLoading, totalPages, setPageNumber } = useHistory();
   const { deleteTransaction } = useTransaction();
   const currentPage = 1;

@@ -16,8 +16,13 @@ import {
   SubmitButton,
   TitleSesion,
 } from '../../../Styles/UI-Components';
+import useSEO from '../../../Hooks/useSeo';
 
 export default function Signup() {
+  useSEO ({
+    title: 'Registro',
+    description: 'Signup',
+  })
   const { handleSignup } = useUser();
   const { errors, setErrors } = useContext(ErrorContext) as ErrorContextType;
   const [formData, setFormData] = useState({

@@ -18,8 +18,13 @@ import {
 } from '../../../Styles/UI-Components';
 import { AmountShow, BackButton, UserNameShow } from '../../../Styles/UI-Wallance';
 import BackSvgComponent from '../../../Components/Svg/BackSvgComponent';
+import useSEO from '../../../Hooks/useSeo';
 
 export default function Wallance() {
+  useSEO({
+    title: 'Ballance',
+    description: 'Wallance',
+  })
   const { user } = useContext(UserContext) as UserContextType;
   const { errors, setErrors } = useContext(ErrorContext) as ErrorContextType;
   const { handleLogout } = useUser();
