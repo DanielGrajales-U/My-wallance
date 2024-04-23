@@ -46,7 +46,7 @@ export default function Login() {
     try {
       await handleLogin(formData);
     } catch (error) {
-      setErrors([error.message]);
+      setErrors([(error as Error).message]);
     }
   };
 

@@ -24,7 +24,7 @@ export default function History() {
   const { deleteTransaction } = useTransaction();
   const currentPage = 1;
 
-  const handlePageChange = (page) => {
+  const handlePageChange = (page: number) => {
     setPageNumber(page);
   };
 

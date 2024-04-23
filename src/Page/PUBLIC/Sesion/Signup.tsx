@@ -47,7 +47,7 @@ export default function Signup() {
     try {
       await handleSignup(formData);
     } catch (error) {
-      setErrors([error.message]);
+      setErrors([(error as Error).message]);
     }
   };
   return (

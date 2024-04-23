@@ -1,7 +1,12 @@
 import { PaginationButton, PaginationContent } from "../../Styles/UI-Components";
 
-export default function Pagination({ totalPages, currentPage, onPageChange }) {
-  const handlePageChange = (page) => {
+interface PaginationProps {
+  totalPages: number;
+  currentPage: number;
+  onPageChange: (page: number) => void;
+}
+export default function Pagination({ totalPages, currentPage, onPageChange }: PaginationProps) {
+  const handlePageChange = (page: number) => {
     onPageChange(page);
   };
 
