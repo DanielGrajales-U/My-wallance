@@ -37,14 +37,18 @@ export default function Signup() {
       [name]: value,
     }));
   };
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const valid = validateSignup(formData);
     if (valid.length > 0) {
       setErrors(valid);
       return;
     }
-    handleSignup(formData);
+    try {
+      await handleSignup(formData);
+    } catch (error) {
+      setErrors([error.message]);
+    }
   };
   return (
     <SesionDiv>

@@ -11,6 +11,7 @@ export default function useUser() {
     const navigate = useNavigate()
 
     const handleLogin = async (body: loginProps) => {
+        // eslint-disable-next-line no-useless-catch
         try{
             const response = await loginService(body)
             if(response.success){
@@ -26,20 +27,25 @@ export default function useUser() {
 
                 return response
             }else{
-                throw new Error(response.errorCode)
+                throw new Error(response.error_code)
             }
         }
         catch(error){
-            console.log(error)
+            throw error
         }
     }
 
     const handleSignup = async ({userName, email, password}: signupProps) => {
+        // eslint-disable-next-line no-useless-catch
         try{
             const response = await signupService({userName, email, password})
-            return response
+            if(response.success){
+                return response
+            }else{
+                throw new Error(response.error_code)
+            }
         }catch(error){
-            console.log(error)
+            throw error
         }
     }
 

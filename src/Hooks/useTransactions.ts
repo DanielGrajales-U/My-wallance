@@ -11,7 +11,6 @@ export default function useTransaction() {
     const createTrans = async (body: createTransactionProps) => {
         try {
             const response = await createTransaction(body, user?.token);
-            console.log(response);
             if (response.success) {
                 setUser((prevUser) => ({
                     ...prevUser as UserModel,

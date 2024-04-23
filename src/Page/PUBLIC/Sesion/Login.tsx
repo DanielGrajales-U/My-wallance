@@ -36,14 +36,18 @@ export default function Login() {
       [name]: value,
     }));
   };
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const valid = validateLogin(formData);
     if (valid.length > 0) {
       setErrors(valid);
       return;
     }
-    handleLogin(formData);
+    try {
+      await handleLogin(formData);
+    } catch (error) {
+      setErrors([error.message]);
+    }
   };
 
   return (
