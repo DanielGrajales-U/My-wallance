@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { createTransaction } from "../Services"
 import { UserContext } from "../Context"
 import { createTransactionProps, UserContextType, UserModel } from "../Interfaces"
+import deleteTransactionService from "../Services/Wallance/deleteTransaction"
 
 
 
@@ -21,7 +22,19 @@ export default function useTransaction() {
             console.error("Error creating transaction:", error);
         }
     };
+
+    const deleteTransaction = async (id: string) => {
+        try{
+            const response = await deleteTransactionService(id, user?.token)
+            return response
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+
     return{
-        createTrans
+        createTrans,
+        deleteTransaction
     }
 }

@@ -139,6 +139,22 @@ export const AmountLabelForm = styled.label`
 
 `
 
+export const TrashSvg = styled.svg`
+  width: 20px;
+  height: 20px;
+  transition: all .2s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+`
+
+export const SvgButton = styled.button`
+  background-color: transparent;
+  border: none;
+  outline: none;
+`
+
 export const PaginationContent = styled.div`
   width: 100%;
   display: flex;

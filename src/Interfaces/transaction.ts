@@ -7,5 +7,5 @@ export interface objectHistory{
     amount: number,
     date: string,
     description: string,
-    id: string
+    _id: string
 }

@@ -7,7 +7,7 @@ import {
   NavWallance,
   WallanceSection,
 } from '../../../Styles/UI-Layouts';
-import { TitleSesion } from '../../../Styles/UI-Components';
+import { SvgButton, TitleSesion } from '../../../Styles/UI-Components';
 import {
   Ammount,
   BackIcon,
@@ -15,22 +15,23 @@ import {
   Description,
   MoreDetails,
 } from '../../../Styles/UI-Wallance';
-import { useHistory } from '../../../Hooks';
-import { Loader } from '../../../Components';
+import { useHistory, useTransaction } from '../../../Hooks';
+import { Loader, TrashSvgComponent } from '../../../Components';
 import Pagination from '../../../Components/Pagination/Pagination';
 
 export default function History() {
   const { history, isLoading, totalPages, setPageNumber } = useHistory();
-  const currentPage = 1
+  const { deleteTransaction } = useTransaction();
+  const currentPage = 1;
 
   const handlePageChange = (page) => {
-    setPageNumber(page)
+    setPageNumber(page);
   };
 
   return (
     <WallanceSection>
       {isLoading ? (
-       <Loader />
+        <Loader />
       ) : (
         <CardContent>
           <NavWallance>
@@ -48,9 +49,10 @@ export default function History() {
           </NavWallance>
           <TitleSesion>History</TitleSesion>
           {history.map((item) => {
+            const id = item._id;
             const formatedDate = formatDate(item.date);
             return (
-              <HistoryContent key={item.id}>
+              <HistoryContent key={id}>
                 <DateHistory>{formatedDate}</DateHistory>
                 <MoreDetails>
                   <Description>{item.description}</Description>
@@ -58,10 +60,17 @@ export default function History() {
                     {item.amount},00
                   </Ammount>
                 </MoreDetails>
+                <SvgButton onClick={() => deleteTransaction(id)}>
+                  <TrashSvgComponent />
+                </SvgButton>
               </HistoryContent>
             );
           })}
-          <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange}/>
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
         </CardContent>
       )}
     </WallanceSection>
