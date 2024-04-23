@@ -6,7 +6,7 @@ const baseUrl = import.meta.env.VITE_BACKEND_URL
 const Validation_Error = import.meta.env.VITE_VALIDATION_ERROR
 const Invalid_Data = import.meta.env.VITE_INVALID_DATA
 const loginService = async ( body: loginProps) => {
-
+    console.log(baseUrl)
     // eslint-disable-next-line no-useless-catch
     try{
         const response = await fetch(`${baseUrl}/auth/login`, {
